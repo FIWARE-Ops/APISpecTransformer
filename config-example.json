@@ -10,7 +10,8 @@
 		    "files": [
 		        {
                     "source": "test-apib.md",
-                    "target": "test.json"
+                    "target": "test.json",
+                    "transform": true
                 }
             ]
         }
