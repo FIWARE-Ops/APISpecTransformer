@@ -280,7 +280,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
         if cmd == 'ping':
             message = {'message': 'Pong'}
-            self.reply(message, cmd=cmd)
+            self.reply(message, cmd=cmd, repo=repo)
             return
 
         if check == 'target':
