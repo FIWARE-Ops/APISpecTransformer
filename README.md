@@ -2,6 +2,7 @@
 
 # API Specification Transformer
 [![Docker badge](https://img.shields.io/docker/pulls/fiware/service.apispectransformer.svg)](https://hub.docker.com/r/fiware/service.apispectransformer/)
+[![Build Status](https://travis-ci.org/FIWARE-Ops/APISpecTransformer.svg?branch=master)](https://travis-ci.org/FIWARE-Ops/APISpecTransformer)
 
 ## Overview
 This project is part of [FIWARE](https://fiware.org) OPS infrastructure.
