@@ -6,16 +6,17 @@ before_install: true
 install: true
 before_script: true
 script:
-- echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
+- echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin
 - echo ${TRAVIS_BUILD_NUMBER} > version
 - echo ${TRAVIS_COMMIT} >> version
 - docker build  --no-cache -t fiware/service.apispectransformer .
 - docker push fiware/service.apispectransformer
 notifications:
   webhooks:
+    on_success: always
+    on_failure: never
+    on_start: never
+    on_cancel: never
+    on_error: never
     urls:
       secure: bH9RffMyY758SUC+m8ANLdotpxFL/E8digNmwbdv0lscOuM98oQ/HbH/Pmd+hScpDBZfI0ZNxbljI/rOCk6PQMppzbWoEX39ZkFNWc9uYhlScEgYYeDJjXtxH2FQh1bgjLmN/L52rvVUcrn/HJmsuOFhaMP5mxuFrijbzhsUw5abuJJq6UrnzfEoBucrYC/NYxO4tPzzeffBLptLOvldGGBKXWhoIlH8aAkysr4Qp4EmH+4batNSHFYO3feFz7mUAUKXZEsqRhOZvbJjhOD50r3r1sB+I+GCwF/es3vyToRB0aC7LY/jy5k5DJpMlbGA9CduSpKijOOU7LiQqS3FQ62mqNBke4kZZ3k6Fc7fSQm/Be4wn4YJ/2dGiPtDtcoREz/lm3+Rx0gtn3Zw1uC6C2y/UpH8o7Heg/iD7xttx91UZVfb0wuAJ+WenbhEYUul5XbhvujXr3xxpCO2aWykF62zWPpGzmG+zDRGL8xbYHpQOin4tjiUDZrFERXyIwNdKjyEUnJB/IaN7T23b6qsfKIi6oIOlvdTqvccgEb/ecFuFoA3TVhuiIQfr5dKmLYoSPGZYCbkNM9KSmdVM798SNsjItoA/43+Cw0XPWLBSs1oVynWuQDpRofIh9a6ZvHLh5F4i7UrkgApqEbwiNWsQCpi2u9fwFvhS9xzxm5bGzQ=
-env:
-  global:
-  - secure: LT+wfsKTl7hvCmTG7uLB+mroLKcGrJMurVklh12APN3FtEactqFF/Vu6nRxDsoCUgDyWjmBFY1ZaUjasyCfwOVfqoRPoXgKy09YBwcS0W5ezb6IbjpA51osOBQKk6b4dJdZZWUaIQEbSsfrpYsJPwGZ1tHO/kA50WnhNMSERClLtwG/fBSjC1xM1hyeiC6v0sUHBNdFAwxoH/APGh8VsydumtNqJEccy0MCeB9t1UHoU8gqz9DFT0Eo3PeB06IEYy7tJeNzeQ2eA3uvYZH46F+QOrowR+oJ0Ydp7hvYDraxiET6fPm9oOjaGD5WH+31qyGG+wl9nlbfqG+DLX8qCmRlilRnnhGuqcNSXAabzKLwtn+pKWPA6LstkJNaUDXDpUbid3PcOY+CHxEp14vaFw+IrBV+Btfnc2J2gm/DqLIkPWROrQ6seKOEwKrwAbOzT0OWKfQZdMVdGO4aDAZ6xmwGtWOQLtu9FVFMCd9sJlc6NCK1pD7bRf58h6uS5WBMnJnLAEvAqZdgMoG1GmS6X4k9526PfZhVR+ycOoEDp503I4fyLTZqRZBW1TZjcSr1AFfJB3+nWTacXCqHuFMrBkn7AM0lHpxHdk6nqHcIkarqfuuWAGLSs4aXKitLSLPKYoeXtKlEADOKYRH+/zIfahymr2R94KyT3I2KyfbEo+lA=
-  - secure: O6tX3LYSd7RLg8rtVt1y8vYyZM810YtY5/1mir+LJPo+BpI8t4v33DF4wTwBMV3RK/DlJ52vzpemWVdx3LO4myo9kWwkVqVshfYQLNGm7HcpCidzTYZ46tY53Mmc53HVNWppNZf4aY1aCsEB+wpaYHdSZpFtK2QQiSykTzFeTv3AaDfqJ35woP4QHB1GBxGcmeqb7LAs4V9xYYRqFjexBOW14wkhqfTFtkkmXhUxS2XdWi+4smG99Uq3X6Vgy7pF+iqg31UY9+pS8XnnWIRObFpgQB/ap6YTbAsrMYK8EHu0GpCLeBbY2xo90mwy58AOThdhirScIclbL7SVaX4/DekbRpAG+T/3A7ngJ8IewzhUGXCisCxc7eldfs2iFhgnqcCIu3zDm7BD9KBmwWgUS+VQB8GhEKmKBz+2ReqkoUF/JgNAV3g3FogM1G3NZPjOwg8WPJPlwvuaxG10P02bN1ZE7xzNsYqKGcjn61SqBmFzlUlKD3pm9qkUS4kbuEQPEV9Vzo0XGl0KEt50OsC/p0SakPn3MPbtGFAFfSSvwxSieolSLAGzcpINstKW9xjWsvhDHT0qGjm4YxQGa4pegIa/4HLZxGDkrYNjoZc+pTrnga7TMk7Pg55wLCpAm9Kb61tZ19xmw/C4rigJ62F1T/tCWM7UFMBD5+EUrmKOoWQ=
