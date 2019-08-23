@@ -1,0 +1,18 @@
+{
+    "format": "swagger20",
+    "branches": [
+        "master"
+    ],
+    "repositories": [
+	    {
+	        "source": "none/test-source",
+	        "target": "none/test-target",
+		    "files": [
+		        {
+                    "source": "test-apib.md",
+                    "target": "test.json"
+                }
+            ]
+        }
+    ]
+}
