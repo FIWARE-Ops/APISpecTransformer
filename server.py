@@ -235,11 +235,6 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.reply(message, cmd=cmd)
             return
 
-        if cmd == 'ping':
-            message = {'message': 'Pong'}
-            self.reply(message, cmd=cmd)
-            return
-
         if cmd not in cmd_post_rl:
             content_length = int(self.headers.get('content-length'))
 
@@ -281,6 +276,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if not check:
             message = {'message': 'Repository not found'}
             self.reply(message, code=404, cmd=cmd, repo=repo)
+            return
+
+        if cmd == 'ping':
+            message = {'message': 'Pong'}
+            self.reply(message, cmd=cmd)
             return
 
         if check == 'target':
@@ -422,7 +422,6 @@ if __name__ == '__main__':
         print(jsn.dumps({'message': 'Config file not found', 'code': 500, 'cmd': 'start'}, indent=2))
         config_file = None
         sys.exit(1)
-
     try:
         with open(config_path) as f:
             config = jsn.load(f)
@@ -430,7 +429,7 @@ if __name__ == '__main__':
         print(jsn.dumps({'message': 'Unsupported config type', 'code': 500, 'cmd': 'start'}, indent=2))
         sys.exit(1)
 
-    print(jsn.dumps({'message': 'Checking config', 'code': 200, 'cmd': 'start'}, indent=2))
+    print(jsn.dumps({'message': 'Loading config', 'code': 200, 'cmd': 'start'}, indent=2))
 
     if 'repositories' not in config:
         print(jsn.dumps({'message': 'Repositories not defined', 'code': 500, 'cmd': 'start'}, indent=2))
