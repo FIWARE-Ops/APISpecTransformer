@@ -1,0 +1,17 @@
+if: branch = master and not type IN (pull_request)
+dist: trusty
+sudo: false
+language: minimal
+before_install: true
+install: true
+before_script: true
+script:
+- echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
+- echo ${TRAVIS_BUILD_NUMBER} > version
+- echo ${TRAVIS_COMMIT} >> version
+- docker build  --no-cache -t fiware/service.apispectransformer .
+- docker push fiware/service.apispectransformer
+env:
+  global:
+  - secure: pbMzvsSqJSjhwZuNDkvWEXRrA3K7WOX2U20nioS03ZlT6ZxImWTn1EDPy3TzEl6FuDYH/9Y0mfGpfI4wQAQV0qFaEOzpwA1hImAt64ePyltzhoXMO/o+0HGP38nHX3dO7PDR2kxAuX4BxGsXJfN+z7NLhUTZ5X2QGN4yVB6c1UT53SXigwLzzefGkTNpSPa/KUiJrQCYsGp5MpvfmWZ1/2IsvP21DMDqXDdo+13Lb3hYUCvKrnZnmNcSS1WIGq2yXYpdp5U8l1wIccCwPgrUsoBFr7y+4n6hIffCskezvSwtZnC+51KtNeD8+lZ9Oj+QpbpA6r/yiiRlaotvG+pAdzhxddVG4ygnWLtz5IOfyTpwIJL89JGPg+28ivj3q8omIMSkGmzmt9B6UGfh8vQwB2afKiZUBbE6UxFP7UMj9eF00HOOByF1+m7g7bcEzpd4a3SvgqlGNPkzJC85hCXKHobmSbnPostLV661NlntQElg1njjLVRUtT5iYesYE4QI8Nv4rBvYAhjRalxtc7sYv/J3PC5PZzmlDVewxdqo/wiWd0ZTfNyPb3d8CJISRQPo42FsbjI5/eBv11SQbKrV/kvJNWBfHje03SKjs6y0XfTGqoZ1Qt1oTP6uoJ96392+Ap/xIqM/klG7of0dkK7QFtGfCDsnoOqnUhKyIdrS72M=
+  - secure: XjdYSoeyib3GpTPw/xAr020WeIByR7pJVkpyBlLkW48MNFl0OBKAiC/uYU5sryyjlIEi/kjwRbxpDlDgnzo0/7Wbr0sWZXSu0i0BwFwOC1SQ8BM4Ny6l09fds6xlk4/xI8khZK09nRuO0OrqoNAQnuG2TjspKmmyPQzxBYw7mhkNmsTVURTBuONIT2xbw8LbHf2Gz5gvJq/lAVYi7mKn8kGETU/PRJmLnz1b9GRlG+MHS00AJNwWYQwHVSaLFWKP9jLtka5Zn8yyfEF4vuEVXm75yWHC5QBxqWlzAGo4NIgNlLkDtnSaDTUB2ve+5AsMFIsak6/8+qrpxEb9HiBgK+jvYwnQeB/4DHH95eYe+6aNlmkE2G6/eV3SyVtJOCHLU2uFLmkLK/V89zR8txafj7y2ys1hOx7Sb1a1m/XPNVNXNyOoVsx0DOo0YKlFTH3QNfliDx9k2VYliBPgi4MF7xXjZn89a1X57mrJhIaP3q7eTDBIqWGHbPlarzkbQRL7rqbU2Hl9UUtY28v7f8FPt1aIvHFB2ty4Hy20cd9FlJj0gAGu+tLl8KrQbSWIiTIZW7UGysnSI1x5EWE/Aym6at2psHsPs0t1gjLHcdvbvx0X4OQAhssbBugcW4wnAofg/c27oxyxiehnwSOGyX5ONfQcmCRUWHvlak/QH9mmSqY=

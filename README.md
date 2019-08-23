@@ -1,4 +1,4 @@
-![FIWARE Banner](https://nexus.lab.fiware.org/static/images/fiware-logo1.png)
+![FIWARE Banner](https://nexus.lab.fiware.org/content/images/fiware-logo1.png)
 
 # API Specification Transformer
 [![Docker badge](https://img.shields.io/docker/pulls/fiware/service.apispectransformer.svg)](https://hub.docker.com/r/fiware/service.apispectransformer/)
@@ -30,7 +30,7 @@ $ curl http://localhost:8000/ping
 + [APIMATIC Transformer](https://apimatic.io/transformer) is used to transform API specifications, so you should provide a valid token with an environment variable TOKEN_APIMATIC.
 + The result of transformation is uploaded to GitHub, so you should provide a valid token with an environment variable TOKEN_GITHUB.
 + TOKEN is used to protect the API endpoint "/config", if not specified, the endpoint will be inaccessible.
-+ Sample config is located [here](https://raw.githubusercontent.com/Fiware/service.APISpecTransformer/master/config-example.json). 
++ Sample config is located [here](https://raw.githubusercontent.com/Fiware-Ops/service.APISpecTransformer/master/config-example.json). 
 
 ## How to use
 Ping
